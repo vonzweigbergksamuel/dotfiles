@@ -36,3 +36,5 @@
     wtl = worktree list
     wtr = worktree remove
     wta = worktree add
+    local-school = config --local user.email "sv222rr@student.lnu.se"
+    local-personal = config --local user.email "143542619+vonzweigbergksamuel@users.noreply.github.com"
