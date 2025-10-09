@@ -31,6 +31,9 @@ alias ls="eza --icons=always"
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+# Lazygit
+alias lg="lazygit"
+
 # --- Autosuggestions & syntax highlighting ---
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
