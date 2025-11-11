@@ -24,6 +24,8 @@
     cge = config --global --edit
     ci = commit
     co = checkout
+    sw = switch
+    swc = switch -C
     cod = checkout .
     rh = reset HEAD
     aa = add -A
