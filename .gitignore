@@ -1,2 +1,7 @@
 configstore/
 gcloud/
+cagent/
+raycast/
+raycast/config.json
+node_modules/
+prompts/

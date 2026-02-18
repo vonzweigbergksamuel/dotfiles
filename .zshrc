@@ -1,7 +1,3 @@
-# -------------------------------
-# Minimal ~/.zshrc config
-# -------------------------------
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -55,3 +51,19 @@ if [ -f '/Users/svz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/svz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/svz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/svz/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH="$HOME/.local/bin:$PATH"
+
+# custom killport command
+killport() {
+    port=$1
+    kill -9 $(lsof -i TCP:${port} | awk '/LISTEN/{print $2}')
+}

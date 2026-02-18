@@ -8,7 +8,7 @@
 	required = true
 [core]
 	excludesfile = /Users/svz/.gitignore_global
-	editor = cursor --wait
+	editor = zed --wait
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
