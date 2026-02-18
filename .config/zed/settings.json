@@ -26,8 +26,7 @@
     "toggle_relative_line_numbers": true,
   },
   "title_bar": {
-    "show_project_items": false,
-    "show_menus": true,
+    "show_onboarding_banner": false,
   },
   "telemetry": {
     "diagnostics": false,
