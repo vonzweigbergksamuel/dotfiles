@@ -17,15 +17,17 @@
   },
   "project_panel": {
     "dock": "right",
+    "hide_root": true,
+    "default_width": 400,
+    "auto_fold_dirs": false,
+    "starts_open": true,
   },
   "vim": {
     "toggle_relative_line_numbers": true,
   },
   "title_bar": {
+    "show_project_items": false,
     "show_menus": true,
-  },
-  "file_finder": {
-    "modal_max_width": "medium",
   },
   "telemetry": {
     "diagnostics": false,
