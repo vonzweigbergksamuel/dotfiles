@@ -9,6 +9,7 @@
 {
   "git_panel": {
     "tree_view": true,
+    "default_width": 300,
   },
   "agent": {
     "dock": "left",
@@ -18,9 +19,19 @@
   "project_panel": {
     "dock": "right",
     "hide_root": true,
-    "default_width": 400,
+    "default_width": 250,
     "auto_fold_dirs": false,
     "starts_open": true,
+  },
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["cva", "cx"],
+        "experimental": {
+          "classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"],
+        },
+      },
+    },
   },
   "vim": {
     "toggle_relative_line_numbers": true,

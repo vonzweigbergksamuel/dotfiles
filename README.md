@@ -13,49 +13,59 @@ GNU Stow is a symlink farm manager that creates symlinks to files in a directory
 
 ## Repository Contents
 
-### Shell
-- **`.zshrc`** – Zsh config with Powerlevel10k, autosuggestions, and aliases
-- **`.p10k.zsh`** – Powerlevel10k theme
+Each top-level folder is a Stow package:
 
-### Git & SSH
-- **`.gitconfig`** – Git settings, aliases, editor, LFS
-- **`.ssh/config`** – SSH client config
-
-### Editors & Terminal
-- **`.config/nvim/`** – Neovim config (LazyVim) with plugins (Luasnip, Pyright, Hardtime, Snacks) and some useful snippets
-- **`.config/zed/settings.json`** – Zed editor settings
-- **`.config/ghostty/config`** – Ghostty terminal (Catppuccin, JetBrains Mono)
+| Package      | Symlinks                  |
+| ------------ | ------------------------- |
+| `zshrc/`     | `.zshrc`                  |
+| `p10k/`      | `.p10k.zsh`               |
+| `gitconfig/` | `.gitconfig`              |
+| `ssh/`       | `.ssh/config`             |
+| `nvim/`      | `.config/nvim/` (LazyVim) |
+| `ghostty/`   | `.config/ghostty/config`  |
 
 ## Installation
 
 1. Clone the repo:
+
    ```bash
    git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
    ```
 
 2. Install GNU Stow:
+
    ```bash
    brew install stow
    ```
 
-3. Create symlinks with Stow:
+3. Create symlinks with Stow (stow each package separately for better control):
+
    ```bash
-   stow .
+   stow zshrc p10k gitconfig ssh nvim ghostty
+   ```
+
+   Or stow individual packages as needed, e.g.:
+
+   ```bash
+   stow nvim
    ```
 
 4. Core deps:
+
    ```bash
    brew install zsh git eza zoxide
    ```
 
 5. Zsh extras:
+
    ```bash
    brew install zsh-autosuggestions zsh-syntax-highlighting
    brew install romkatv/powerlevel10k/powerlevel10k
    ```
 
 6. Optional: Ghostty, Neovim, Zed:
+
    ```bash
    brew install --cask ghostty
    brew install neovim
@@ -69,9 +79,9 @@ GNU Stow is a symlink farm manager that creates symlinks to files in a directory
 
 ## Usage
 
-- **Stow a package**: `stow package-name`
-- **Unstow**: `stow -D package-name`
-- **Restow**: `stow -R package-name`
+- **Stow a package**: `stow nvim`
+- **Unstow**: `stow -D nvim`
+- **Restow**: `stow -R nvim`
 
 ## Requirements
 
