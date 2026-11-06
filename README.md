@@ -1,92 +1,69 @@
 # Dotfiles
 
-Personal dotfiles managed with GNU Stow for easy installation and management.
+Personal macOS dotfiles, managed with [GNU Stow](https://www.gnu.org/software/stow/). Each top-level folder is a Stow package that symlinks its files into `~`.
 
-## About GNU Stow
+## Packages
 
-GNU Stow is a symlink farm manager that creates symlinks to files in a directory tree. It's perfect for managing dotfiles because it:
+| Package      | Symlinks                  | What it is                                     |
+| ------------ | ------------------------- | ---------------------------------------------- |
+| `zshrc/`     | `.zshrc`                  | Zsh setup (history, completion, tools, PATH)   |
+| `starship/`  | `.config/starship.toml`   | Starship prompt                                |
+| `gitconfig/` | `.gitconfig`              | Git user, aliases, Cursor as editor            |
+| `ssh/`       | `.ssh/config`             | SSH hosts for GitHub and GitLab                |
+| `nvim/`      | `.config/nvim/`           | Neovim (LazyVim)                               |
+| `ghostty/`   | `.config/ghostty/config`  | Ghostty terminal settings                      |
 
-- Creates clean symlinks from your home directory to the dotfiles repository
-- Allows easy installation/removal of configuration packages
-- Maintains a clean home directory structure
-- Supports selective installation of specific tools
+## What the shell gives you
 
-## Repository Contents
+- **History:** 50 000 lines, shared between terminals; arrow up/down searches history for what you've typed
+- **Autosuggestions** from history as you type (`zsh-autosuggestions`)
+- **Syntax highlighting** that shows whether a command is valid (`zsh-syntax-highlighting`)
+- **`cd`** → [zoxide](https://github.com/ajeetdsouza/zoxide), **`ls`** → [eza](https://eza.rocks) with icons, **`lg`** → lazygit
+- **Tab completion** via `compinit` (git, gcloud, Vite+ and more)
+- **Prompt:** Starship with directory, git branch, exit code, command duration and clock
+- **`killport <port>`** kills whatever is listening on a port
 
-Each top-level folder is a Stow package:
+Works the same in Ghostty and Rex, since both run your login shell. Icons need a font with Nerd Font symbols; Rex has them built in.
 
-| Package      | Symlinks                  |
-| ------------ | ------------------------- |
-| `zshrc/`     | `.zshrc`                  |
-| `starship/`  | `.config/starship.toml`   |
-| `gitconfig/` | `.gitconfig`              |
-| `ssh/`       | `.ssh/config`             |
-| `nvim/`      | `.config/nvim/` (LazyVim) |
-| `ghostty/`   | `.config/ghostty/config`  |
+## Install on a new Mac
 
-## Installation
-
-1. Clone the repo:
+1. Install the tools:
 
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+   brew install stow git eza zoxide lazygit starship zsh-autosuggestions zsh-syntax-highlighting
+   ```
+
+2. Clone the repo:
+
+   ```bash
+   git clone git@github.com:vonzweigbergksamuel/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
    ```
 
-2. Install GNU Stow:
-
-   ```bash
-   brew install stow
-   ```
-
-3. Create symlinks with Stow (stow each package separately for better control):
+3. Link the packages (move any existing files out of the way first, or Stow will refuse):
 
    ```bash
    stow zshrc starship gitconfig ssh nvim ghostty
    ```
 
-   Or stow individual packages as needed, e.g.:
+4. Reload the shell:
 
-   ```bash
-   stow nvim
-   ```
-
-4. Core deps:
-
-   ```bash
-   brew install zsh git eza zoxide
-   ```
-
-5. Zsh extras:
-
-   ```bash
-   brew install zsh-autosuggestions zsh-syntax-highlighting
-   brew install starship
-   ```
-
-6. Optional: Ghostty, Neovim, gcloud:
-
-   ```bash
-   brew install --cask ghostty
-   brew install neovim
-   brew install --cask gcloud-cli
-   ```
-
-   The zsh setup also works in Rex, which runs the same login shell.
-
-7. Reload shell:
    ```bash
    source ~/.zshrc
    ```
 
+Optional: `brew install neovim`, `brew install --cask ghostty gcloud-cli`.
+
+`.zshrc` also sources Vite+ (`~/.config/vite-plus/env`) and adds pnpm, libpq, mysql-client and OpenJDK to PATH when installed.
+
 ## Usage
 
-- **Stow a package**: `stow nvim`
-- **Unstow**: `stow -D nvim`
-- **Restow**: `stow -R nvim`
+| Task              | Command             |
+| ----------------- | ------------------- |
+| Link a package    | `stow nvim`         |
+| Unlink a package  | `stow -D nvim`      |
+| Relink a package  | `stow -R nvim`      |
 
-## Requirements
+## Not in git
 
-- GNU Stow
-- Zsh, Starship, eza, zoxide
-- Optional: Ghostty or Rex, Neovim, gcloud
+`cagent/`, `configstore/`, `gcloud/` and `raycast/` live in this folder but are ignored: they hold app state and credentials, not config.
