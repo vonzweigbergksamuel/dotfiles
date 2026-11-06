@@ -35,8 +35,6 @@ eval "$(starship init zsh)"
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# Shopify Hydrogen alias to local projects
-alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
 # Google Cloud SDK (installed via `brew install --cask gcloud-cli`)
 if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
