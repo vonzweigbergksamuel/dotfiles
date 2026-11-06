@@ -18,7 +18,7 @@ Each top-level folder is a Stow package:
 | Package      | Symlinks                  |
 | ------------ | ------------------------- |
 | `zshrc/`     | `.zshrc`                  |
-| `p10k/`      | `.p10k.zsh`               |
+| `starship/`  | `.config/starship.toml`   |
 | `gitconfig/` | `.gitconfig`              |
 | `ssh/`       | `.ssh/config`             |
 | `nvim/`      | `.config/nvim/` (LazyVim) |
@@ -42,7 +42,7 @@ Each top-level folder is a Stow package:
 3. Create symlinks with Stow (stow each package separately for better control):
 
    ```bash
-   stow zshrc p10k gitconfig ssh nvim ghostty
+   stow zshrc starship gitconfig ssh nvim ghostty
    ```
 
    Or stow individual packages as needed, e.g.:
@@ -61,7 +61,7 @@ Each top-level folder is a Stow package:
 
    ```bash
    brew install zsh-autosuggestions zsh-syntax-highlighting
-   brew install romkatv/powerlevel10k/powerlevel10k
+   brew install starship
    ```
 
 6. Optional: Ghostty, Neovim, gcloud:
@@ -88,5 +88,5 @@ Each top-level folder is a Stow package:
 ## Requirements
 
 - GNU Stow
-- Zsh, Powerlevel10k, eza, zoxide
+- Zsh, Starship, eza, zoxide
 - Optional: Ghostty or Rex, Neovim, gcloud

@@ -1,0 +1,66 @@
+# Starship prompt — mirrors the old Powerlevel10k "lean" look:
+#   ~/dir branch ?1 ............................ 2s 14:32:05
+#   >
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+format = """
+$directory$git_branch$git_state$git_status\
+$fill\
+$status$cmd_duration$jobs$time
+$character"""
+
+[directory]
+style = "blue"
+truncation_length = 0
+truncate_to_repo = false
+read_only = " ro"
+
+[git_branch]
+format = "[$branch]($style) "
+style = "green"
+
+[git_state]
+style = "yellow"
+
+[git_status]
+# Counts like p10k: "main ?1 !2 +1 >1"
+format = "([$all_status$ahead_behind]($style))"
+style = "yellow"
+conflicted = "=${count} "
+untracked = "?${count} "
+modified = "!${count} "
+deleted = "-${count} "
+renamed = "+${count} "
+staged = "+${count} "
+stashed = "*${count} "
+ahead = ">${count} "
+behind = "<${count} "
+diverged = "<${behind_count}>${ahead_count} "
+
+[fill]
+symbol = "."
+style = "black"
+
+[status]
+disabled = false
+format = "[$status]($style) "
+style = "red"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[jobs]
+format = "[$symbol$number]($style) "
+style = "red"
+
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "cyan"
+time_format = "%H:%M:%S"
+
+[character]
+success_symbol = "[>](green)"
+error_symbol = "[>](red)"
