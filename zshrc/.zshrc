@@ -19,6 +19,9 @@ setopt hist_verify
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
+# --- Completion (tab-completion for commands like gcloud, vp, git) ---
+autoload -Uz compinit && compinit
+
 # --- Useful tools ---
 # Better ls
 alias ls="eza --icons=always"

@@ -64,13 +64,15 @@ Each top-level folder is a Stow package:
    brew install romkatv/powerlevel10k/powerlevel10k
    ```
 
-6. Optional: Ghostty, Neovim, Zed:
+6. Optional: Ghostty, Neovim, gcloud:
 
    ```bash
    brew install --cask ghostty
    brew install neovim
-   brew install --cask zed
+   brew install --cask gcloud-cli
    ```
+
+   The zsh setup also works in Rex, which runs the same login shell.
 
 7. Reload shell:
    ```bash
@@ -87,4 +89,4 @@ Each top-level folder is a Stow package:
 
 - GNU Stow
 - Zsh, Powerlevel10k, eza, zoxide
-- Optional: Ghostty, Neovim, Zed
+- Optional: Ghostty or Rex, Neovim, gcloud
