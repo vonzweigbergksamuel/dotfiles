@@ -8,8 +8,8 @@ fi
 
 # --- History setup ---
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
+SAVEHIST=50000
+HISTSIZE=50000
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -38,26 +38,21 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Shopify Hydrogen alias to local projects
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/svz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/svz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/svz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/svz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# Google Cloud SDK (installed via `brew install --cask gcloud-cli`)
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/Users/svz/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 export PATH="$HOME/.local/bin:$PATH"
@@ -67,3 +62,7 @@ killport() {
     port=$1
     kill -9 $(lsof -i TCP:${port} | awk '/LISTEN/{print $2}')
 }
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# Vite+ bin (https://viteplus.dev)
+. "/Users/svz/.config/vite-plus/env"

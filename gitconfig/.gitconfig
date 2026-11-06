@@ -8,10 +8,10 @@
 	required = true
 [core]
 	excludesfile = /Users/svz/.gitignore_global
-	editor = zed --wait
+	editor = cursor --wait
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -38,5 +38,3 @@
     wtl = worktree list
     wtr = worktree remove
     wta = worktree add
-    local-school = config --local user.email "sv222rr@student.lnu.se"
-    local-personal = config --local user.email "143542619+vonzweigbergksamuel@users.noreply.github.com"
