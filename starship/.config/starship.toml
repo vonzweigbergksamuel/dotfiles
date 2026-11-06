@@ -1,11 +1,11 @@
 # Starship prompt — mirrors the old Powerlevel10k "lean" look:
-#   ~/dir branch ?1 ............................ 2s 14:32:05
+#   ~/dir branch ............................ 2s 14:32:05
 #   >
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
 format = """
-$directory$git_branch$git_state$git_status\
+$directory$git_branch$git_state\
 $fill\
 $status$cmd_duration$jobs$time
 $character"""
@@ -22,21 +22,6 @@ style = "green"
 
 [git_state]
 style = "yellow"
-
-[git_status]
-# Counts like p10k: "main ?1 !2 +1 >1"
-format = "([$all_status$ahead_behind]($style))"
-style = "yellow"
-conflicted = "=${count} "
-untracked = "?${count} "
-modified = "!${count} "
-deleted = "-${count} "
-renamed = "+${count} "
-staged = "+${count} "
-stashed = "*${count} "
-ahead = ">${count} "
-behind = "<${count} "
-diverged = "<${behind_count}>${ahead_count} "
 
 [fill]
 symbol = "."
